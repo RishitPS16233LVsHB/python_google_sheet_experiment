@@ -1,0 +1,21 @@
+import gspread
+
+credentials ={
+  "type": "service_account",
+  "project_id": "gsscontract",
+  "private_key_id": "d9c78713ee2eee0d6484421f375fa3112d1c540e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCGPuMhxtY/AyjV\nBvCY3+KQiP+e7GcwM+yAVe6egjui0QLavneBf/+aniAMhJXX5bO+ILIYUUksjqnX\nORbuVfxBbx6Frl2YOUpmcPVhG9a69N58U9a5rRFbpWR9Tdz3b+mTeEFx9+puNaRp\nKlkWFL0+rrZGRmlaTCS901e4bBJOFdmfhMb6pWopZlUkB0Dm2Z3naCy2igVlrcud\nSOTOKi79pvB58mCwVbsqmXQ5Wqke1A8CImNKn/mRP6MSOLkDWDfNbme6pAp1jKLg\nE+DcE3CHxzUxt2Hr6dIDpG1adSFj0ft7I8prdC9j25AhsXlk/0KM21AOJBpiKR/U\nhIyfrQ/FAgMBAAECggEAJZ/6iLzxzzdTemE3jaEyHtBG1IPtZ9Uls9Jhzosxq7Bo\n3GYFmIYHXY5z7Q478QawGdmQEMC3gYV6lJerlaED0lMSeuUj1kY4U/3UyCLFTCDV\nOoNE60VWWBlC0NvB0pfLH0nVDdwuGDVwnwj/bvDhGXBeJdQWMvikU4+oRkgD2V5e\ncgZiFh1ay/emD/mZC8bg+pt75C9slmIjlDlbYqhfeRdK7K1RTZCWDNAVjrJXbjRY\naYMeXCCBaWcPn1jdLexI6j2uSshxK7n/bcjQCjt1YGLUwJyqm++JbegquS92gY6C\nETvHp40XowcA/y936KUPyjIIS0wfDoDADDlpRm+VAQKBgQC8dHbYUQsGCj6Jlfzb\n2y5Yh302U9w2EepHICZkrXUI0FrvYMWqz6uuYidPJQKByAPrkmbDXgznckfDIURo\npGuqSYq3L5iElVKuGmjlJnzq7kEB6PfgJai4bN5iMF7Dkoz/adQASrFduHrF2/AF\n4oSVCoTW1dNeIE2zmIg5tX5dgwKBgQC2XH4KzxME/slwd0y40T63hzbp5vsty/oD\nSP8Mq84YVKxIZuK0KjoOKD+276mvXAA2pN5NbQlLEeqXmd4QDZ8T5CHJZppMD8q/\nlyt1pV85ZI9FhZs5oG0tsbvjc8Ha53/OIkoXPQPyAJTqTDdRRzRQ+dapbKhzoqPq\ntyu+2ONjFwKBgAThOyaUyqVIZKApaxfCUCvorjxW5Y/c3OUklvnqZ+pngsNKDTRE\nFlz4m6339l2n8ToLW2/ZopnnoqYR2XSgNU1+hAIEUH22ZCKv+mFcosVuj+5duvVp\n5DmKUCPYvstvowkGE4BCbt9PZJZ1AH0WhXpagGATv1pjmb95xqU/5trDAoGAPCXl\nrMsACvW+m0m+FHdvqDkA88Urs79DhzHcbeF86KmE6ZyFycbjvyenXD9QSHaf22Yl\nrIP6PLh8F+S4SbM0dOsZ+cPNwKi0xtyliPgyoEt6tgOLX0Z6vEeTIUJc/ka88NB+\nf4uwcXGfrGfXFwfVSaAeHWOpa/qI9jHUS+5dkaECgYBY4vghL0hH6SijTXMppDEl\n74PgPiY73MuHqG8XUp7SH2odPBaMv8tKCeBmF9fREGhAznDEeaObvAQqahYf6lF5\nxERetpdAhjZutFYWjSMA8xRSKgT35GiRTsMq/ZRtYe6paAiX+NN9Jzx/NRB6ZAg3\nshT39GMs/XzKrjNYoU/UAQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "rishit@gsscontract.iam.gserviceaccount.com",
+  "client_id": "108844345697401717766",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rishit%40gsscontract.iam.gserviceaccount.com"
+}
+service_account = gspread.service_account_from_dict(credentials)
+Sheet = service_account.open("MyTemp")
+WorkSheet = Sheet.worksheet("Sheet1")
+#list of new data
+newData = [["Hetvi","9900990099","HetviB@gmail.com"],["Mohammed","9900990099","MD@gmail.com"],["Vivek","9900990099","VB@gmail.com"]]
+WorkSheet.append_rows(newData)
+print(WorkSheet.get_all_values())
